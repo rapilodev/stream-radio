@@ -1,0 +1,76 @@
+#! /bin/sh
+
+isUpstart() {
+    /sbin/init --version 2>/dev/null | grep -q 'upstart'
+    if [ "$?" = "0" ]; then
+        return 0
+    else 
+        return 1
+    fi
+}
+
+isSystemd() {
+    /bin/systemctl 2>/dev/null | grep -q '\-\.mount'
+    if [ "$?" = "0" ]; then
+        return 0
+    else 
+        return 1
+    fi
+}
+
+if ! getent group audiostream >/dev/null; then
+        addgroup --system audiostream
+fi
+
+if ! getent passwd audiostream >/dev/null; then
+        adduser --system --ingroup audiostream --home /var/lib/audiostream audiostream
+fi
+
+# add groups to user
+addgroup audiostream pulse
+addgroup audiostream pulse-access
+addgroup audiostream audio
+
+if [ -d /var/lib/stream-schedule/ ]; then
+  chown audiostream:audiostream /var/lib/stream-schedule/
+  chmod 0750 /var/lib/audiostream/
+fi
+
+if [ -d /var/run/stream-schedule/ ]; then
+  chown audiostream:audiostream /var/run/stream-schedule/
+  chmod 0775 /var/run/stream-schedule/
+fi
+
+if [ -d /var/log/stream-schedule/ ]; then
+  chgrp audiostream /var/log/stream-schedule/
+  chmod 0775 /var/log/stream-schedule/
+fi
+
+# set group
+chgrp audiostream /etc/stream-schedule/radio/*.conf
+chgrp audiostream /etc/init/stream-radio.conf
+chgrp audiostream /etc/logrotate.d/stream-radio
+chmod 644 /etc/logrotate.d/stream-radio
+
+chmod 0775 /bin/prepare-stream-radio.sh
+
+if isUpstart; then
+	echo "restart stream-radio upstart service"
+    PID=$(status "stream-radio" 2>/dev/null | awk '/[0-9]$/ { print $NF }')
+    [ -z "$PID" ] || kill -HUP $PID
+
+    # restart liquidsoap
+    initctl reload-configuration
+    start stream-radio
+fi
+
+if isSystemd; then
+	echo "restart stream-radio systemd service"
+    systemctl daemon-reload
+	systemctl enable stream-radio
+	systemctl start stream-radio
+fi
+
+exit 0
+
+#DEBHELPER#

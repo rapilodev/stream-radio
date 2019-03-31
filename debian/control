@@ -1,0 +1,14 @@
+Source: stream-radio
+Section: sound
+Priority: optional
+Maintainer: Milan Chrobok <mc@radiopiloten.de>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Homepage: https://launchpad.net/~mc-1/+archive/stream-schedule
+
+Package: stream-radio
+Architecture: any
+Depends: ${misc:Depends}, 
+Description: liquidsoap service for radio stream 
+ streams icecast mount /schedule to mount /radio with fallback
+

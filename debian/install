@@ -1,0 +1,8 @@
+etc/stream-schedule/radio/system.conf
+etc/stream-schedule/radio/fallback.conf
+etc/stream-schedule/radio/stream-out.conf
+etc/stream-schedule/radio/start.conf
+etc/init/stream-radio.conf
+etc/logrotate.d/stream-radio
+etc/systemd/system/stream-radio.service
+bin/prepare-stream-radio.sh
