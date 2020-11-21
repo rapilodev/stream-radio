@@ -31,23 +31,23 @@ addgroup audiostream pulse
 addgroup audiostream pulse-access
 addgroup audiostream audio
 
-if [ -d /var/lib/stream-schedule/ ]; then
-  chown audiostream:audiostream /var/lib/stream-schedule/
+if [ -d /var/lib/stream-radio/ ]; then
+  chown audiostream:audiostream /var/lib/stream-radio/
   chmod 0750 /var/lib/audiostream/
 fi
 
-if [ -d /var/run/stream-schedule/ ]; then
-  chown audiostream:audiostream /var/run/stream-schedule/
-  chmod 0775 /var/run/stream-schedule/
+if [ -d /var/run/stream-radio/ ]; then
+  chown audiostream:audiostream /var/run/stream-radio/
+  chmod 0775 /var/run/stream-radio/
 fi
 
-if [ -d /var/log/stream-schedule/ ]; then
-  chgrp audiostream /var/log/stream-schedule/
-  chmod 0775 /var/log/stream-schedule/
+if [ -d /var/log/stream-radio/ ]; then
+  chgrp audiostream /var/log/stream-radio/
+  chmod 0775 /var/log/stream-radio/
 fi
 
 # set group
-chgrp audiostream /etc/stream-schedule/radio/*.conf
+chgrp audiostream /etc/stream-radio/*.conf
 chgrp audiostream /etc/init/stream-radio.conf
 chgrp audiostream /etc/logrotate.d/stream-radio
 chmod 644 /etc/logrotate.d/stream-radio

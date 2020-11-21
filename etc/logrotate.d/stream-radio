@@ -1,4 +1,4 @@
-/var/log/stream-schedule/*radio*.log {
+/var/log/stream-radio/*radio*.log {
 	rotate 7
 	daily
 	compress
@@ -7,6 +7,6 @@
 #       we do not use built-in logging to catch script errors, 
 #       see https://github.com/savonet/liquidsoap/issues/363
 #	postrotate
-#	kill -USR1 `cat /var/run/stream-schedule/stream-radio.pid 2>/dev/null` 2>/dev/null || true
+#	kill -USR1 `cat /var/run/stream-radio/stream-radio.pid 2>/dev/null` 2>/dev/null || true
 #	endscript
 }
