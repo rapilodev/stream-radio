@@ -8,6 +8,6 @@ Homepage: https://launchpad.net/~mc-1/+archive/stream-radio
 
 Package: stream-radio
 Architecture: any
-Depends: ${misc:Depends}, 
+Depends: ${misc:Depends}, quelcom
 Description: service to record an audio stream, write it to disk and send it to an icecast server
 

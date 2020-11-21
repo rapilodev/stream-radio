@@ -1,7 +1,12 @@
-etc/stream-radio/system.conf
 etc/stream-radio/fallback.conf
-etc/stream-radio/stream-out.conf
+etc/stream-radio/icecast.conf
+etc/stream-radio/input-alsa.conf
 etc/stream-radio/start.conf
+etc/stream-radio/output-file-wav.conf
+etc/stream-radio/output-stream-flac.conf
+etc/stream-radio/output-stream-mp3.conf
+etc/stream-radio/output-stream-ogg.conf
+etc/stream-radio/system.conf
 etc/init/stream-radio.conf
 etc/logrotate.d/stream-radio
 etc/systemd/system/stream-radio.service
