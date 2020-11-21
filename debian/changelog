@@ -1,6 +1,10 @@
-stream-radio (0.2) focal; urgency=low
+stream-radio (0.2.2 focal; urgency=low
+  * reorganize config files
+ -- Milan Chrobok <mc@radiopiloten.de>  Sat, 21 Nov 2020 14:04:09 +0200
+
+stream-radio (0.2.1 focal; urgency=low
   * rename stream-schedule/(radio) to stream-radio/
- -- Milan Chrobok <mc@radiopiloten.de>  Sun, 31 Mar 2019 12:04:09 +0200
+ -- Milan Chrobok <mc@radiopiloten.de>  Sat, 21 Nov 2020 12:04:09 +0200
 
 stream-radio (0.1.3) xenial; urgency=low
   * cleanup start script
